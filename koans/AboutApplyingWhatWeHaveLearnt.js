@@ -32,16 +32,26 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
 
       var productsICanEat = [];
 
+
       /* solve using filter() & all() / any() */
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      var nutlessProducts = _(products).filter(function (x) {return x.containsNuts === false});
+      var noMushrooms = function (x) {return x!=="mushrooms"};
+
+      for (var i=0; i<nutlessProducts.length; i++) {
+        if _(nutlessProducts[i].ingredients).all(noMushrooms) {
+          productsICanEat.push(nutlessProducts[i]);
+        }
+      }
+
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
@@ -55,14 +65,26 @@ describe("About Applying What We Have Learnt", function() {
       }
     }
     
-    expect(sum).toBe(FILL_ME_IN);
+    expect(sum).toBe(233168);
   });
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
 
-    var sum = FILL_ME_IN;    /* try chaining range() and reduce() */
+    var nums = _.range(1000);
+    
+    var sum = _(nums).reduce(function(memo,x){
+        if (x % 3===0 || x % 5 ===0) {
+          return memo+x;
+        }
+        else {return memo}
 
-    expect(233168).toBe(FILL_ME_IN);
+
+    });
+
+     /* try chaining range() and reduce() */
+     /*I couldn't figure out how to chain the range() function because it doesn't take an array argument */
+
+    expect(233168).toBe(sum);
   });
 
   /*********************************************************************************/
