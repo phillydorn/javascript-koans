@@ -197,8 +197,16 @@ describe("About Applying What We Have Learnt", function() {
 
   });
 
-  it("should find the difference between the sum of the squares and the square of the sums", function () {
+  it("should find the difference between the sum of the squares and the square of the sums", function (num1, num2) {
     
+      var sumOfSquares, squareOfSums, difference;
+
+      sumOfSquares = num1*num1 + num2*num2;
+      squareOfSums = (num1 + num2) * (num1+ num2);
+
+      difference = Math.abs(sumOfSquares-squareOfSums);
+
+      return difference;
   });
 
   it("should find the 10001st prime", function () {
