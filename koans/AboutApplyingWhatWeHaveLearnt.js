@@ -177,7 +177,24 @@ describe("About Applying What We Have Learnt", function() {
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
       
-    
+    var isDivisible = true,
+        smallNum = 20;
+
+      do {
+        isDivisible = true;
+        smallNum++;
+        for (var i = 1; i <=20; i++) {
+          if (smallNum % i !== 0) {
+            isDivisible = false;
+          }
+        
+        }
+      
+      
+      } while (!isDivisible);
+
+      return smallNum;
+
   });
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
