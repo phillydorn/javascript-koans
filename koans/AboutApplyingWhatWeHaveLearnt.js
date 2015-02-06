@@ -123,9 +123,31 @@ describe("About Applying What We Have Learnt", function() {
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
-  it("should find the largest prime factor of a composite number", function () {
   
+  it("should find the largest prime factor of a composite number", function (compNum) {
+        var largestPrime = 1;
+        var isPrime;
+        for (var i = 2; i<=compNum/2; i++) {
+          if (compNum % i === 0)//checks if i is a factor of compNum
+          {
+            
+            isPrime = true;
+            for (var j=2; j<=i/2; j++) // checks to see if i is prime
+            {
+              if (i % j ===0)
+              {
+                isPrime = false;
+              }
+
+            }
+            if (isPrime)
+              {
+                largestPrime=i;
+              }
+        
+        }
+      }
+  return largestPrime;
   });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
@@ -144,5 +166,5 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the 10001st prime", function () {
 
   });
-  */
+  
 });
