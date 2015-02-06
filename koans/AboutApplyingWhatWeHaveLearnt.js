@@ -79,7 +79,8 @@ describe("About Applying What We Have Learnt", function() {
         else {return memo}
 
 
-    });
+    },0
+  );
 
      /* try chaining range() and reduce() */
      /*I couldn't figure out how to chain the range() function because it doesn't take an array argument */
@@ -97,15 +98,27 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   it("should count the ingredient occurrence (functional)", function () {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
+    var result = _(products).chain()
+              .map(function(product) {return product.ingredients})
+              .flatten()
+              .reduce(function(memo,x){
+                if (x === "mushrooms") {
+                  memo++;
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+                }
+                return memo;
+              }, 0)
+              .value();
+    ingredientCount["mushrooms"] = result;
+
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
