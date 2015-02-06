@@ -151,6 +151,27 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
+        var product, largePalindrome, productString, productReverse;
+
+        for (var i = 100; i < 1000; i++){
+          for (var j = i; j < 1000; j++) {
+              product = (i * j)
+              productString = product.toString();
+              productReverse = "";
+
+              for (var k = productString.length-1; k >=0; k --) {//goes over each character of the string to reverse it
+                  productReverse = productReverse +  productString[k];
+                  
+              }
+            
+                if (productString === productReverse) {
+                largePalindrome = product;
+              }
+            }
+          }
+          return largePalindrome;
+
+
     
   });
 
